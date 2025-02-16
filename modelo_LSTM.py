@@ -14,8 +14,11 @@ print(df.describe())
 # nos sirven para entrenar el modelo y hacemos lo mismo con las devoluciones ya que para este modelo solo predeciremos 
 # las ventas sin tener en cuenta si se devuelven productos, y eliminamos también outliers.
 print(df[df['UnitPrice'] <=0 ])
-df = df.drop(df[(df['UnitPrice'] <= 0) | (df['UnitPrice'] > 1000)].index)
-df = df.drop(df[(df['Quantity'] <= 0) | (df['Quantity'] > 70000)].index)
+df = df.drop(df[(df['UnitPrice'] <= 0)].index)
+df = df.drop(df[(df['Quantity'] <= 0)].index)
+
+descripciones_a_eliminar = ["AMAZON FEE", "Manual", "Adjust bad debt", "POSTAGE",
+                            "DOTCOM POSTAGE", "CRUK Commission", "Bank Charges", "SAMPLES"]
 
 
 
@@ -101,3 +104,5 @@ history = model.fit(
 
 test_loss = model.evaluate(X_test_scaled, y_test_scaled)
 print(f"Pérdida en el conjunto de test: {test_loss}")
+
+

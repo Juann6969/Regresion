@@ -10,6 +10,8 @@ print(df.describe())
 
 df = df.drop(df[(df['UnitPrice'] <= 0) | (df['UnitPrice'] > 100)].index)
 df = df.drop(df[(df['Quantity'] <= 0) | (df['Quantity'] > 100)].index)
+descripciones_a_eliminar = ["AMAZON FEE", "Manual", "Adjust bad debt", "POSTAGE",
+                            "DOTCOM POSTAGE", "CRUK Commission", "Bank Charges", "SAMPLES"]
 
 duplicados = df.duplicated().sum()
 df = df.drop_duplicates(keep='first')
