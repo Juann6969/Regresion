@@ -20,7 +20,7 @@ df = df.drop(df[(df['Quantity'] <= 0)].index)
 descripciones_a_eliminar = ["AMAZON FEE", "Manual", "Adjust bad debt", "POSTAGE",
                             "DOTCOM POSTAGE", "CRUK Commission", "Bank Charges", "SAMPLES"]
 
-df = df[df["Description"].isin(descripciones_a_eliminar)]
+df = df[~df["Description"].isin(descripciones_a_eliminar)]
 
 
 #Eliminamos todos las filas duplicadas conservando la primera con keep=first
